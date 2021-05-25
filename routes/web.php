@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 //cambio la route
-Route::resources('posts', 'PostController');
+/*Route::resources('posts', 'PostController');*/
