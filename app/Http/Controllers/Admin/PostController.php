@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use App\Post;
+use App\Comment;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -45,9 +47,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        dd($post->comments);
+        $posts = Post::find($id);
+        $comments = Comment::find($id);
+
+        return view('admin.posts.show',['posts'=>$posts], ['comments'=>$comments]);
 
     }
 

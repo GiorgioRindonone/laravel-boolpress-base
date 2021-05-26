@@ -17,4 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //cambio la route
-/*Route::resources('posts', 'PostController');*/
+//partendo dalla fine prima riga, abbiamo creato un gruppo di rotte, che condivide il namespace di Admin, avranno il nome prefissato con admin., 
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
+    Route::resource('posts', 'PostController');
+});
