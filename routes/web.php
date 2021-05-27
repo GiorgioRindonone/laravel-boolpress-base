@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BlogController@index')->name('guest.posts.index');
+Route::get('posts/{slug}', 'BlogController@show')->name('guest.posts.show');
+
 //cambio la route
 //partendo dalla fine prima riga, abbiamo creato un gruppo di rotte, che condivide il namespace di Admin, avranno il nome prefissato con admin., 
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
